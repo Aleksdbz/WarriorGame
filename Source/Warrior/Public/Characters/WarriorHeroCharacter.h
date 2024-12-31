@@ -6,8 +6,10 @@
 #include "Characters/WarriorBaseCharacter.h"
 #include "WarriorHeroCharacter.generated.h"
 
+struct FInputActionValue;
 class UCameraComponent;
 class USpringArmComponent;
+class UMyDataAsset_InputConfig;
 /**
  * 
  */
@@ -19,6 +21,8 @@ class WARRIOR_API AWarriorHeroCharacter : public AWarriorBaseCharacter
 public:
 	AWarriorHeroCharacter();
 protected:
+
+	virtual void SetupPlayerInputComponent(UInputComponent* PlayerInputComponent) override;
 	virtual void BeginPlay() override;
 
 private:
@@ -30,6 +34,13 @@ private:
 	UCameraComponent* FollowCamera;
 	
 #pragma endregion
+
 	
-	
+	UPROPERTY(EditDefaultsOnly,BlueprintReadOnly,Category="CharacterData",Meta=(AllowPrivateAccess=true))
+	UMyDataAsset_InputConfig* InputConfigDataAsset;
+#pragma region Inputs
+
+	void Input_Move(const FInputActionValue& InputActionValue);
+	void Input_Look(const FInputActionValue& InputActionValue);
+#pragma endregion
 };
