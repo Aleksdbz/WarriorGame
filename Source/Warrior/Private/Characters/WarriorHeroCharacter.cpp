@@ -10,7 +10,7 @@
 #include "EnhancedInputSubsystems.h"
 #include "Components/Input/WarriorInputComponent.h"
 #include "WarriorGamePlayTags.h"
-
+#include "DataAssets/StartUpData/DataAsset_StarUpDataBase.h"
 
 
 AWarriorHeroCharacter::AWarriorHeroCharacter()
@@ -63,6 +63,19 @@ void AWarriorHeroCharacter::BeginPlay()
 	Super::BeginPlay();
 
 	DeBug::Print(TEXT("Working"));
+}
+
+void AWarriorHeroCharacter::PossessedBy(AController* NewController)
+{
+	Super::PossessedBy(NewController);
+
+	if (!CharacterStartUpData.IsNull())
+	{
+		if (UDataAsset_StarUpDataBase* LoadedData = CharacterStartUpData.LoadSynchronous())
+		{
+			LoadedData->GiveToAbilitySystemComponent(WarriorAbilitySystemComponent);
+		}
+	}
 }
 
 void AWarriorHeroCharacter::Input_Move(const FInputActionValue& InputActionValue)

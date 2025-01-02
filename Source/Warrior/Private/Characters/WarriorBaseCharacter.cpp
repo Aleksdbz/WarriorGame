@@ -6,6 +6,7 @@
 #include "AbilitySystem/WarriorAbilitySystemComponent.h"
 #include "AbilitySystem/WarriorAttributeSet.h"
 
+
 // Sets default values
 AWarriorBaseCharacter::AWarriorBaseCharacter()
 {
@@ -29,5 +30,9 @@ UAbilitySystemComponent* AWarriorBaseCharacter::GetAbilitySystemComponent() cons
 void AWarriorBaseCharacter::PossessedBy(AController* NewController)
 {
 	Super::PossessedBy(NewController);
-	if (WarriorAbilitySystemComponent) WarriorAbilitySystemComponent->InitAbilityActorInfo(this, this);
+	if (WarriorAbilitySystemComponent)
+	{
+		WarriorAbilitySystemComponent->InitAbilityActorInfo(this,this);
+		ensureMsgf(!CharacterStartUpData.IsNull(),TEXT("CharacterStartUpData is NULL"));
+	}
 }

@@ -25,6 +25,8 @@ protected:
 	virtual void SetupPlayerInputComponent(UInputComponent* PlayerInputComponent) override;
 	virtual void BeginPlay() override;
 
+	
+
 private:
 #pragma region Components
 
@@ -32,6 +34,9 @@ private:
 	USpringArmComponent* CameraBoom;
 	UPROPERTY(VisibleAnywhere,BlueprintReadOnly,Category="Camera",Meta=(AllowPrivateAccess=true))
 	UCameraComponent* FollowCamera;
+
+	virtual void PossessedBy(AController* NewController) override;
+
 	
 #pragma endregion
 

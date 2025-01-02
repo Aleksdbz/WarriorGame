@@ -7,6 +7,7 @@
 #include "AbilitySystemInterface.h"
 #include "WarriorBaseCharacter.generated.h"
 
+class UDataAsset_StarUpDataBase;
 class UWarriorAttributeSet;
 class UWarriorAbilitySystemComponent;
 UCLASS()
@@ -24,9 +25,10 @@ protected:
 	UPROPERTY(VisibleAnywhere,BlueprintReadOnly,Category = "AbilitySystem")
 	UWarriorAttributeSet* WarriorAttributeSet;
 
-	virtual void PossessedBy(AController* NewController) override;
+	UPROPERTY(EditAnywhere,BlueprintReadOnly,Category = "CharacterData")
+	TSoftObjectPtr<UDataAsset_StarUpDataBase> CharacterStartUpData;
 
-	
+	virtual void PossessedBy(AController* NewController) override;
 
 public:
 	FORCEINLINE UWarriorAbilitySystemComponent* GetWarriorAbilitySystemComponent() const { return WarriorAbilitySystemComponent; }
