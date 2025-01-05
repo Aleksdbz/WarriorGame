@@ -31,6 +31,6 @@ protected:
 		const FGameplayAbilityActorInfo* ActorInfo, const FGameplayAbilityActivationInfo ActivationInfo, bool bReplicateEndAbility, bool bWasCancelled) override;
 
 	UFUNCTION(BlueprintPure,Category = "Warrior|Ability")
-	UPawnCombatComponent* GetCombatComponentFromActorInfo() const;
+	UPawnCombatComponent* GetPawnCombatComponentFromActorInfo() const;
 	
 };

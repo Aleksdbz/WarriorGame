@@ -9,7 +9,7 @@
 
 class AWarriorWeaponBase;
 
-/**
+/*
  * 
  */
 UCLASS()
@@ -27,6 +27,7 @@ public:
 	FGameplayTag CurrentEquippedWeaponTag;
 	UFUNCTION(BlueprintCallable, Category = "Warrior|Combat")
 	AWarriorWeaponBase* GetCharacterCurrentWeapon() const;
+	
 	
 private:
 	TMap<FGameplayTag,AWarriorWeaponBase* > CharacterCarriedWeaponMap;

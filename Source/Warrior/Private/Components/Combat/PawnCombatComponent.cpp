@@ -35,4 +35,3 @@ AWarriorWeaponBase* UPawnCombatComponent::GetCharacterCurrentWeapon() const
 	return  GetCharacterCarriedWeaponByTag(CurrentEquippedWeaponTag);
 }
 
-
